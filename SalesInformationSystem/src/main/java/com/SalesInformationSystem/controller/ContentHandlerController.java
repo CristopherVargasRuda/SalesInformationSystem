@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.SalesInformationSystem.entity.Product;
 import com.SalesInformationSystem.service.ContentHandlerService;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequestMapping
 public class ContentHandlerController {
 
-	@Autowired
-	@Qualifier("contentHandlerService")
-	private ContentHandlerService contentHandlerService;
-	
-	@PostMapping("/uploadProducts")
-    public ResponseEntity<List<Product>> uploadProducts() {				
-		return new ResponseEntity<List<Product>>(contentHandlerService.getAllProducts(), HttpStatus.OK);
+    @Autowired
+    @Qualifier("contentHandlerService")
+    private ContentHandlerService contentHandlerService;
+
+    @GetMapping("/uploadProducts")
+    public ResponseEntity<List<Product>> uploadProducts() {
+        return new ResponseEntity<List<Product>>(contentHandlerService.getAllProducts(), HttpStatus.OK);
     }
 
 }

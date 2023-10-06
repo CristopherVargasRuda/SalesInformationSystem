@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.SalesInformationSystem.entity.Customer;
 import com.SalesInformationSystem.entity.SaleProduct;
@@ -24,11 +25,11 @@ public class SalesController {
     @Qualifier("salesService")
     private SalesService salesService;
 
-    @GetMapping("/confirmSale/{idCustomer}/{nameCustomer}/{total}")
-    public String confirmSale(@RequestBody List<SaleProductDto> SaleProductsDto, 
-    		@PathVariable int idCustomer, @PathVariable String nameCustomer, 
-    		@PathVariable double total
-    		) {
+    @PostMapping("/confirmSale")
+    public ResponseEntity<String> confirmSale(@RequestBody List<SaleProductDto> SaleProductsDto,
+                                              @RequestParam("idCustomer") int idCustomer, @RequestParam("nameCustomer") String nameCustomer,
+                                              @RequestParam("total") double total
+    ) {
         Customer customer = new Customer();
         customer.setIdCustomer(idCustomer);
         customer.setName(nameCustomer);
@@ -38,10 +39,10 @@ public class SalesController {
             SaleProduct saleProduct = new SaleProduct();
             saleProduct.setCodeProduct(saleProductDto.getCodeProduct());
             saleProduct.setQuantitySold(saleProductDto.getQuantitySold());
-            saleProduct.setCodeSale(codeSale);            
+            saleProduct.setCodeSale(codeSale);
         }
         salesService.addProductsForSale(saleProducts);
-        return null;
+        return ResponseEntity.ok("OK");
     }
 
 }

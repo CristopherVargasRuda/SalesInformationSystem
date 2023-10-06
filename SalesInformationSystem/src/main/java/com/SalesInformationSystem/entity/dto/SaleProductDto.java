@@ -5,6 +5,11 @@ public class SaleProductDto {
     private Integer codeProduct;
     private Integer quantitySold;
 
+    public SaleProductDto(Integer codeProduct, Integer quantitySold) {
+        this.codeProduct = codeProduct;
+        this.quantitySold = quantitySold;
+    }
+
     public Integer getCodeProduct() {
         return codeProduct;
     }
