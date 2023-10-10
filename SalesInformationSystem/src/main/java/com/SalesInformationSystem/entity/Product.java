@@ -17,7 +17,7 @@ public class Product {
     private String name;
 
     @Column(name = "preciounitario", nullable = false)
-    private int unitPrice;
+    private double unitPrice;
 
     @Column(name = "codcategoria", nullable = false)
     private int codeCategory;
@@ -41,11 +41,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 

@@ -14,7 +14,7 @@ public class SaleProduct {
     private int codeSaleProduct;
 
     @Column(name = "codventa", nullable = false)
-    private int codeSale;
+    private double codeSale;
 
     @Column(name = "codproducto", nullable = false)
     private int codeProduct;
@@ -30,11 +30,11 @@ public class SaleProduct {
         this.codeSaleProduct = codeSaleProduct;
     }
 
-    public int getCodeSale() {
+    public double getCodeSale() {
         return codeSale;
     }
 
-    public void setCodeSale(int codeSale) {
+    public void setCodeSale(double codeSale) {
         this.codeSale = codeSale;
     }
 
