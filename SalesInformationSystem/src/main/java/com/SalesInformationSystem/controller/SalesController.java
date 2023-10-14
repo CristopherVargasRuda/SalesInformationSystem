@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.SalesInformationSystem.entity.Customer;
 import com.SalesInformationSystem.entity.SaleProduct;
@@ -25,6 +30,7 @@ public class SalesController {
     @Qualifier("salesService")
     private SalesService salesService;
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/confirmSale")
     public ResponseEntity<String> confirmSale(@RequestBody List<SaleProductDto> SaleProductsDto,
                                               @RequestParam("idCustomer") int idCustomer, @RequestParam("nameCustomer") String nameCustomer,
