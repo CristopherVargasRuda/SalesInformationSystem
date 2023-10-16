@@ -46,6 +46,7 @@ public class SalesController {
             saleProduct.setCodeProduct(saleProductDto.getCodeProduct());
             saleProduct.setQuantitySold(saleProductDto.getQuantitySold());
             saleProduct.setCodeSale(codeSale);
+            saleProducts.add(saleProduct);
         }
         salesService.addProductsForSale(saleProducts);
         return ResponseEntity.ok("OK");
