@@ -26,7 +26,7 @@ public class ContentHandlerController {
     @Qualifier("contentHandlerService")
     private ContentHandlerService contentHandlerService;
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://127.0.0.1:5173")
     @GetMapping("/uploadProducts")
     public ResponseEntity<List<Product>> uploadProducts() {
         return new ResponseEntity<List<Product>>(contentHandlerService.getAllProducts(), HttpStatus.OK);

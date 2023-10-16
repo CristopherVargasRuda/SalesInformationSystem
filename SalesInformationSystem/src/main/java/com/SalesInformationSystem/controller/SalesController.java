@@ -30,7 +30,7 @@ public class SalesController {
     @Qualifier("salesService")
     private SalesService salesService;
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://127.0.0.1:5173")
     @PostMapping("/confirmSale")
     public ResponseEntity<String> confirmSale(@RequestBody List<SaleProductDto> SaleProductsDto,
                                               @RequestParam("idCustomer") int idCustomer, @RequestParam("nameCustomer") String nameCustomer,
